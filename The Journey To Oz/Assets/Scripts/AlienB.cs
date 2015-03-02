@@ -24,8 +24,8 @@ public class AlienB : MonoBehaviour {
         {
             if (readyToAttack)
             {
-                var explode = target.GetComponent<Explode>() as Explode;
-                explode.OnExplode();
+                var death = target.GetComponent<Death>() as Death;
+                death.OnDeath();
 
             }
             else

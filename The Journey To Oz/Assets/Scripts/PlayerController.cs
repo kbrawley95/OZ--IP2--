@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     private Animator anim;
+    public AudioClip walkSound;
 
     public enum DirectionState
     {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 	private void Start ()
     {
         anim = GetComponent<Animator>();
+       
 	}
 	
 	// Update is called once per frame
@@ -56,4 +58,14 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("Speed", 0);
         }
 	}
+
+    void PlayWalkSound()
+    {
+        if (walkSound)
+        {
+            AudioSource.PlayClipAtPoint(walkSound, transform.position);
+            
+        }
+           
+    }
 }
