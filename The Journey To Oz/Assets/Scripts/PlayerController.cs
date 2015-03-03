@@ -29,24 +29,60 @@ public class PlayerController : MonoBehaviour
     {
         moving.x = moving.y = 0;
 
-        if (Input.GetAxis("Horizontal") > 0.1f)
+
+        //Gamepad Controller
+        if (Input.GetAxis("Horizontal") ==1f)
         {
             moving.x = Input.GetAxis("Horizontal");
             anim.SetInteger("Direction", (int)DirectionState.Right);
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetAxis("Horizontal") == -1f)
         {
             moving.x = Input.GetAxis("Horizontal");
             anim.SetInteger("Direction", (int)DirectionState.Left);
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetAxis("Vertical") == 1f)
         {
             moving.y = -Input.GetAxis("Vertical");
+            anim.SetInteger("Direction", (int)DirectionState.Down);
+        }
+        else if (Input.GetAxis("Vertical") ==-1f)
+        {
+            moving.y =- Input.GetAxis("Vertical");
             anim.SetInteger("Direction", (int)DirectionState.Up);
         }
-        else if (Input.GetAxis("Vertical") > 0.1f)
+
+        if (moving != Vector2.zero)
         {
-            moving.y = -Input.GetAxis("Vertical");
+            anim.SetInteger("Speed", 1);
+        }
+        else
+        {
+            anim.SetInteger("Speed", 0);
+        }
+
+        //Keyboard Controller
+        if (Input.GetKey("a"))
+        {
+            moving.x = -1;
+            anim.SetInteger("Direction", (int)DirectionState.Left);
+        }
+
+        else if (Input.GetKey("d"))
+        {
+            moving.x = 1;
+            anim.SetInteger("Direction", (int)DirectionState.Right);
+        }
+
+        else if (Input.GetKey("w"))
+        {
+            moving.y = 1;
+            anim.SetInteger("Direction", (int)DirectionState.Up);
+        }
+
+        else if (Input.GetKey("s"))
+        {
+            moving.y = -1;
             anim.SetInteger("Direction", (int)DirectionState.Down);
         }
 
