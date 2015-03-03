@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     public AudioClip walkSound;
+    public DirectionState StartingDirection;
 
     public enum DirectionState
     {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
 	private void Start ()
     {
         anim = GetComponent<Animator>();
-       
+        anim.SetInteger("Direction", (int)StartingDirection);
 	}
 	
 	// Update is called once per frame
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
           }
           else if (Input.GetKey("down") || Input.GetKey("s") )
           {
-              moving.y = -1;
+             moving.y = -1;
              anim.SetInteger("Direction", (int)DirectionState.Down);
           }
 
