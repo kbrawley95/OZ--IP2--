@@ -22,7 +22,7 @@ public class FollowPlayer : MonoBehaviour {
 
             if (transform.position == player.transform.position)
             {
-                speed = 0;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             }
         }
         
