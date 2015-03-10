@@ -52,14 +52,20 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("Direction", (int)DirectionState.Up);
         }
 
-        if (moving != Vector2.zero)
+        //Diagonal Movement
+        if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == 1f || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == 1f)
         {
-            anim.SetInteger("Speed", 1);
+            moving.x = Input.GetAxis("Horizontal");
+            moving.y = -Input.GetAxis("Vertical");
+            anim.SetInteger("Direction", (int)DirectionState.Down);
         }
-        else
+        else if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == -1f || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == -1f)
         {
-            anim.SetInteger("Speed", 0);
+            moving.x = Input.GetAxis("Horizontal");
+            moving.y = -Input.GetAxis("Vertical");
+            anim.SetInteger("Direction", (int)DirectionState.Up);
         }
+
 
         //Keyboard Controller
         if (Input.GetKey("a"))
@@ -94,6 +100,48 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetInteger("Speed", 0);
         }
+
+        //Diagonal Keyboard Movement
+        if (Input.GetKey("a") && Input.GetKey("w"))
+        {
+            moving.x = -1;
+            moving.y = 1;
+            anim.SetInteger("Direction", (int)DirectionState.Up);
+        }
+
+        if (Input.GetKey("d") && Input.GetKey("w"))
+        {
+            moving.x = 1;
+            moving.y = 1;
+            anim.SetInteger("Direction", (int)DirectionState.Up);
+        }
+
+        if (Input.GetKey("a") && Input.GetKey("s"))
+        {
+            moving.x = -1;
+            moving.y = -1;
+            anim.SetInteger("Direction", (int)DirectionState.Down);
+        }
+
+        if (Input.GetKey("d") && Input.GetKey("s"))
+        {
+            moving.x = 1;
+            moving.y = -1;
+            anim.SetInteger("Direction", (int)DirectionState.Down);
+        }
+
+
+
+        //Idle Trigger
+        if (moving != Vector2.zero)
+        {
+            anim.SetInteger("Speed", 1);
+        }
+        else
+        {
+            anim.SetInteger("Speed", 0);
+        }
+
 	}
 
     void PlayWalkSound()
