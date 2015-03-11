@@ -3,20 +3,26 @@ using System.Collections;
 
 public class RockPlacement : MonoBehaviour {
 
-    private Invisible invisible;
+    public GameObject rock;
+    public GameObject collisionRock;
+    private DisableCollider collider;
 
     void Start()
     {
-        invisible = GetComponent<Invisible>();
+        collider = GetComponent<DisableCollider>();
+        rock.renderer.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D target)
     {
-            if (target.gameObject.tag == "Block")
-            {
-                Destroy(target.gameObject);
-                invisible.isVisible = true;
-            }
+
+        if (target.gameObject== collisionRock)
+        {
+            Destroy(target.gameObject);
+            rock.renderer.enabled = true;
+            collider.RockCounter++;
+        }
+       
 
     }
 
