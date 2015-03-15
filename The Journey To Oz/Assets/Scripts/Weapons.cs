@@ -4,6 +4,7 @@ using System.Collections;
 public class Weapons : MonoBehaviour {
 
 	public GameObject[] weapons; // add weapons in editor drag and drop
+    public Transform attachmentPoint;
 	public int currentWeapon = 0;
 	public int numWeapons;
 	// Use this for initialization
@@ -11,11 +12,21 @@ public class Weapons : MonoBehaviour {
 	
 		numWeapons = weapons.Length;
 		changeWeapon(currentWeapon); // sets default (unarmed??)
+
+        foreach (GameObject w in weapons)
+        {
+            w.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        foreach (GameObject w in weapons)
+        {
+            w.transform.position = attachmentPoint.position;
+        }
+
 
 		if(Input.GetKeyDown (KeyCode.Alpha1)){
 			changeWeapon(0);
