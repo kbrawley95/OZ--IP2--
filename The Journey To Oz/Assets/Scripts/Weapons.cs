@@ -22,7 +22,6 @@ public class Weapons : MonoBehaviour {
         foreach (GameObject w in weaponsList)
         {
             w.SetActive(false);
-            changeWeapon(0);
         }
 	}
 	
@@ -78,6 +77,9 @@ public class Weapons : MonoBehaviour {
             if (target.gameObject.tag == "PickUp")
             {
                 weaponsList.Add(target.gameObject);
+                target.gameObject.tag = "Untagged";
+
+               
             }
         }
 }
