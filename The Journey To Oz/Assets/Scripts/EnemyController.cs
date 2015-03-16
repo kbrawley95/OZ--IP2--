@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float followDistance;
     public float speed = 2f;
     public Vector3[] points;
+    public LayerMask layer;
 
     private bool IsFollowing = false;
     private int current = 0;
@@ -22,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
         if (player != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position).normalized, followDistance);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.transform.position - transform.position).normalized, followDistance, layer);
             Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * followDistance, Color.green, 1);
             if (hit.collider != null)
             {

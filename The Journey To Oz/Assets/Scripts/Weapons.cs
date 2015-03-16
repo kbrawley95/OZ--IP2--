@@ -56,15 +56,16 @@ public class Weapons : MonoBehaviour {
         public void changeWeapon(int num)
         {
             currentWeapon = num;
-            for (int i = 0; i < numWeapons; i++)
+            for (int i = 0; i < weaponsList.Count; i++)
+            { 
                 if (i == num)
                     weaponsList[i].gameObject.SetActive(true);
                 else
                 {
+                    Debug.Log(currentWeapon);
                     weaponsList[i].gameObject.SetActive(false);
-                    
                 }
-                    
+            }
         }
 
         public void AddWeapon(GameObject pickUp)
