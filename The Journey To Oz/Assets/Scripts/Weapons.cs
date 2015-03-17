@@ -36,13 +36,13 @@ public class Weapons : MonoBehaviour {
             w.transform.position = attachmentPoint.position;
         }
         
-            if (Input.GetKey("1"))
+            if (Input.GetKey("1")||Input.GetButton("ChangeWeaponPrevious"))
             {
                 changeWeapon(0);
                 Debug.Log("Unarmed");
             }
 
-            if (Input.GetKey("2"))
+            if (Input.GetKey("2") || Input.GetButton("ChangeWeaponNext"))
             {
                 changeWeapon(1);
                 Debug.Log("Sword");

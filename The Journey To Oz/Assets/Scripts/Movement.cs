@@ -25,9 +25,7 @@ public class Movement : MonoBehaviour {
                 transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90);
             }
         }
-    
-        
-       
+
 	
 	}
 }
