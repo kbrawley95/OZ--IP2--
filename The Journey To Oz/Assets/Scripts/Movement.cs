@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour {
                 difference.Normalize(); //The sum of the vector will always be equal to 1
 
                 float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   //Calculating the angle of location and converting to degrees
-                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 180);
             }
         }
 

@@ -8,10 +8,16 @@ public class EnemyController : MonoBehaviour
     public float speed = 2f;
     public Vector3[] points;
     public LayerMask layer;
+    //public float spiderHealth;
 
     private bool IsFollowing = false;
     private int current = 0;
 
+    private void Start()
+    {
+       // spiderHealth = 3;
+    }
+        
     private void Update()
     {
         if (Vector3.Distance(points[current], transform.position) < 1)

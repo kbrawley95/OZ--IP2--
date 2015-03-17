@@ -32,13 +32,13 @@ public class Death: MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D target)
+    /*void OnCollisionEnter2D(Collision2D target)
     {
         if (target.gameObject.tag == "Deadly")
         {
             OnDeath();
         }
-    }
+    }*/
 
     /// <summary>
     /// Method that removes player from game scene
