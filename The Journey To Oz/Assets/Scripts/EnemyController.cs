@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float speed = 2f;
     public Vector3[] points;
     public LayerMask layer;
+    public bool isOn = true;
     //public float spiderHealth;
 
     private bool IsFollowing = false;
@@ -15,6 +16,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        
        // spiderHealth = 3;
     }
         

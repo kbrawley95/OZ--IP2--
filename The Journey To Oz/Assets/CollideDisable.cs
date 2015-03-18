@@ -3,11 +3,19 @@ using System.Collections;
 
 public class CollideDisable : MonoBehaviour {
 
-    public Camera camera;
+    CameraFollow cam;
+    EnemyController controller;
+    public GameObject obj;
+    public GameObject spider;
+
+
 	// Use this for initialization
 	void Start () {
 
-        camera.GetComponent<CameraFollow>();
+        cam = obj.GetComponent<CameraFollow>();
+        controller=spider.GetComponent<EnemyController>();
+        controller.enabled = false;
+        
 	}
 	
 	// Update is called once per frame
@@ -21,7 +29,13 @@ public class CollideDisable : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D target)
     {
         if (target.gameObject.tag == "Player")
-            camera.enabled = false;
+        {
+            controller.enabled = true;
+
+            cam.maxZoom = 1;
+            cam.minZoom = 6f;
+            //cam.enabled = false;
+        }
     }
 }
 
