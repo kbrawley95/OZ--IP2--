@@ -4,7 +4,6 @@ using System.Collections;
 public class PauseMenu : MonoBehaviour {
 
      public bool paused = false;
-        
  
      void Update()
      {
@@ -16,9 +15,8 @@ public class PauseMenu : MonoBehaviour {
      {
          if(paused)
          {
-             GUILayout.BeginArea (new Rect((Screen.width/2)-50, (Screen.height/2), 100, 100), "<color=White><size=40>Paused</size></color>");
-             //GUILayout.Label("Game is paused!");
-             
+             GUILayout.BeginArea(new Rect(750, 300, 200, 200));
+             GUILayout.Label("Game is paused!");
              GUILayout.EndArea();
 
             
