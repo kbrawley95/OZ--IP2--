@@ -25,7 +25,7 @@ public class Death: MonoBehaviour {
     /// <param name="target"></param>
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.tag=="Deadly")    
+        if (target.gameObject.tag=="Deadly"||target.gameObject.tag=="Boss")    
         {
             OnDeath();
             

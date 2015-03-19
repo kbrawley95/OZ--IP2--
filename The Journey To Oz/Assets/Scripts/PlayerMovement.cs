@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         var absVelX = Mathf.Abs(rigidbody2D.velocity.x);
         var absVelY = Mathf.Abs(rigidbody2D.velocity.y);
 
-        if (controller.moving.x != 0 && !isSprinting)
+        if (controller.moving.x != 0 && !isSprinting )
         {
             if (absVelX < maxVel.x)
             {

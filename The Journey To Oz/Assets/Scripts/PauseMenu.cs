@@ -3,17 +3,41 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+     public bool paused = false;
+ 
+     void Update()
+     {
+         if(Input.GetButtonDown("PauseButton"))
+             paused = togglePause();
+     }
+     
+     void OnGUI()
+     {
+         if(paused)
+         {
+             GUILayout.BeginArea(new Rect(750, 300, 200, 200));
+             GUILayout.Label("Game is paused!");
+             GUILayout.EndArea();
 
-        if (Input.GetKey("p"))
-        {
-        }
-	
-	}
-}
+            
+         }
+     }  
+     
+     bool togglePause()
+     {
+         if(Time.timeScale == 0f)
+         {
+             Time.timeScale = 1f;
+             return(false);
+         }
+         else
+         {
+             Time.timeScale = 0f;
+             return(true);    
+         }
+     }
+
+
+    }
+    
+

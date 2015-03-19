@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour 
-{
+public class SpawnedEnemyController : MonoBehaviour {
+
     public GameObject player;
     public float followDistance;
     public float speed = 2f;
@@ -15,18 +15,18 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        
-       // spiderHealth = 3;
+
+        // spiderHealth = 3;
     }
-        
+
     private void Update()
     {
-        if (Vector3.Distance(points[current], transform.position) < 1)
+        /*if (Vector3.Distance(points[current], transform.position) < 1)
         {
             current++;
             if (current >= points.Length)
                 current = 0;
-        }
+        }*/
 
         if (player != null)
         {
@@ -63,6 +63,3 @@ public class EnemyController : MonoBehaviour
         }
     }
 }
-
-
-

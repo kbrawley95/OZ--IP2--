@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
    // public int currentSound = 0;
 	//public int numSounds;
 
+    private PauseMenu paused;
+    public GameObject level;
+
     public enum DirectionState
     {
         Right = 3,
@@ -26,6 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetInteger("Direction", (int)StartingDirection);
+
+ 
+        paused = level.GetComponent<PauseMenu>();
        
 	}
 	
@@ -36,22 +42,22 @@ public class PlayerController : MonoBehaviour
 
 
         //Gamepad Controller
-        if (Input.GetAxis("Horizontal") ==1f)
+        if (Input.GetAxis("Horizontal") ==1f && paused.paused==false)
         {
             moving.x = Input.GetAxis("Horizontal");
             anim.SetInteger("Direction", (int)DirectionState.Right);
         }
-        else if (Input.GetAxis("Horizontal") == -1f)
+        else if (Input.GetAxis("Horizontal") == -1f && paused.paused == false)
         {
             moving.x = Input.GetAxis("Horizontal");
             anim.SetInteger("Direction", (int)DirectionState.Left);
         }
-        else if (Input.GetAxis("Vertical") == 1f)
+        else if (Input.GetAxis("Vertical") == 1f && paused.paused == false)
         {
             moving.y = -Input.GetAxis("Vertical");
             anim.SetInteger("Direction", (int)DirectionState.Down);
         }
-        else if (Input.GetAxis("Vertical") ==-1f)
+        else if (Input.GetAxis("Vertical") == -1f && paused.paused == false)
         {
             moving.y =- Input.GetAxis("Vertical");
             anim.SetInteger("Direction", (int)DirectionState.Up);
@@ -73,25 +79,25 @@ public class PlayerController : MonoBehaviour
 
 
         //Keyboard Controller
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") && paused.paused == false)
         {
             moving.x = -1;
             anim.SetInteger("Direction", (int)DirectionState.Left);
         }
 
-        else if (Input.GetKey("d"))
+        else if (Input.GetKey("d") && paused.paused == false)
         {
             moving.x = 1;
             anim.SetInteger("Direction", (int)DirectionState.Right);
         }
 
-        else if (Input.GetKey("w"))
+        else if (Input.GetKey("w") && paused.paused == false)
         {
             moving.y = 1;
             anim.SetInteger("Direction", (int)DirectionState.Up);
         }
 
-        else if (Input.GetKey("s"))
+        else if (Input.GetKey("s") && paused.paused == false)
         {
             moving.y = -1;
             anim.SetInteger("Direction", (int)DirectionState.Down);
@@ -107,28 +113,28 @@ public class PlayerController : MonoBehaviour
         }
 
         //Diagonal Keyboard Movement
-        if (Input.GetKey("a") && Input.GetKey("w"))
+        if (Input.GetKey("a") && Input.GetKey("w") && paused.paused == false)
         {
             moving.x = -1;
             moving.y = 1;
             anim.SetInteger("Direction", (int)DirectionState.Up);
         }
 
-        if (Input.GetKey("d") && Input.GetKey("w"))
+        if (Input.GetKey("d") && Input.GetKey("w") && paused.paused == false)
         {
             moving.x = 1;
             moving.y = 1;
             anim.SetInteger("Direction", (int)DirectionState.Up);
         }
 
-        if (Input.GetKey("a") && Input.GetKey("s"))
+        if (Input.GetKey("a") && Input.GetKey("s") && paused.paused == false)
         {
             moving.x = -1;
             moving.y = -1;
             anim.SetInteger("Direction", (int)DirectionState.Down);
         }
 
-        if (Input.GetKey("d") && Input.GetKey("s"))
+        if (Input.GetKey("d") && Input.GetKey("s") && paused.paused == false)
         {
             moving.x = 1;
             moving.y = -1;

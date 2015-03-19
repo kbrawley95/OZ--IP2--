@@ -5,6 +5,7 @@ public class CollideDisable : MonoBehaviour {
 
     CameraFollow cam;
     EnemyController controller;
+    SpawnSpiders spiderSpawn;
     public GameObject obj;
     public GameObject spider;
 
@@ -15,6 +16,8 @@ public class CollideDisable : MonoBehaviour {
         cam = obj.GetComponent<CameraFollow>();
         controller=spider.GetComponent<EnemyController>();
         controller.enabled = false;
+        spiderSpawn = spider.GetComponent<SpawnSpiders>();
+        spiderSpawn.enabled = false;
         
 	}
 	
@@ -30,6 +33,7 @@ public class CollideDisable : MonoBehaviour {
     {
         if (target.gameObject.tag == "Player")
         {
+            spiderSpawn.enabled = true;
             controller.enabled = true;
 
             cam.maxZoom = 1;
