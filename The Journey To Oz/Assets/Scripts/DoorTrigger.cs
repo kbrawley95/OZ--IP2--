@@ -8,7 +8,7 @@ public class DoorTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -22,7 +22,8 @@ public class DoorTrigger : MonoBehaviour {
         if (ignoreTrigger)
             return;
 
-        if (target.gameObject.tag == "Player" || target.gameObject.tag=="Block")
+        if (target.gameObject.tag=="Block"  )
+            
             door.Open();
     }
 
@@ -31,7 +32,7 @@ public class DoorTrigger : MonoBehaviour {
         if (ignoreTrigger)
             return;
 
-        if (target.gameObject.tag == "Player" || target.gameObject.tag == "Block")
+        if (target.gameObject.tag == "Block" )
             door.Close();
     }
 

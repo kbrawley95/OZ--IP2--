@@ -36,7 +36,7 @@ public class Switch : MonoBehaviour {
             {
                 dt.Toogle(true);
             }
-            
+
         } 
     }
 
