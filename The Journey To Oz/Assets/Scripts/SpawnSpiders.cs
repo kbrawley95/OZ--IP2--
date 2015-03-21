@@ -4,44 +4,32 @@ using System.Collections.Generic;
 
 public class SpawnSpiders : MonoBehaviour {
 
-    public List<GameObject> spiders;
+    public GameObject spiderPrefab;
+    public Vector3 offset = Vector3.zero;
+    public float startingDelay = 1.0f;
+    public float delay = 2.0f;
+    private int limit = 50;
 
-    public GameObject spawnObject;
-    public GameObject player;
-    public float x;
-    public float y;
-    public float z;
-    public float spawnRate;
-    public float initialDelay;
-    public int limit = 7;
-    private float counter;
+    private List<GameObject> spiders = new List<GameObject>();
 
-
-
-    void Start()
+    private void Start()
     {
         spiders = new List<GameObject>();
+        StartCoroutine(SpawnASpiders(startingDelay));
     }
 
-
-    void Update()
+    private IEnumerator SpawnASpiders(float s)
     {
-        InvokeRepeating("Spawn",initialDelay, spawnRate);
-       
+        yield return new WaitForSeconds(s);
 
-        if (spiders.Count == limit)
+        if (limit >= 0)
         {
-            CancelInvoke("Spawn");
-
+            spiders.Add((GameObject)Instantiate(spiderPrefab, new Vector3(offset.x, Random.Range(-offset.y, offset.y), offset.z), Quaternion.identity));
+            limit--;
+            StartCoroutine(SpawnASpiders(delay));
         }
-      
     }
 
-    void Spawn()
-    {
-        spiders.Add((GameObject)Instantiate(spawnObject, new Vector3(x, Random.Range(-y, y), z), Quaternion.identity));
-        
-    }   
 
    
 

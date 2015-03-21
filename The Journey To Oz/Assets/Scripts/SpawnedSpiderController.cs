@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour 
-{
+public class SpawnedSpiderController : MonoBehaviour {
+
     public GameObject player;
     public float followDistance;
     public float minSpeed = 50f;
-     public float  maxSpeed = 80f;
-    public Vector3[] points;
+    public float maxSpeed = 80f;
+   // public Vector3[] points;
+    public Vector3 point;
     public LayerMask layer;
     //public float spiderHealth;
 
@@ -16,18 +17,11 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        
-       // spiderHealth = 3;
+        // spiderHealth = 3;
     }
-        
+
     private void Update()
     {
-        if (Vector3.Distance(points[current], transform.position) < 1)
-        {
-            current++;
-            if (current >= points.Length)
-                current = 0;
-        }
 
         if (player != null)
         {
@@ -53,17 +47,14 @@ public class EnemyController : MonoBehaviour
     {
         if (!IsFollowing)
         {
-            Vector3 direction = points[current] - transform.position;
-            direction = direction.normalized;
-            GetComponent<Rigidbody2D>().velocity = direction * minSpeed * Time.deltaTime;
+            float direction = -point.x;
+           // direction = direction.normalized;
+            GetComponent<Rigidbody2D>().velocity = new Vector3(direction, 0, 0) * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
         }
         else if (IsFollowing)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            GetComponent<Rigidbody2D>().velocity = direction * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
+            GetComponent<Rigidbody2D>().velocity = direction* Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
         }
     }
 }
-
-
-
