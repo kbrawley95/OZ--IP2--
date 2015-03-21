@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour {
     {
         if (origin)
         {
-            if (transform.position == origin.attachmentPoint.position)
+            if (transform.position == origin.attachmentPoint.position || transform.position == origin.attachmentPointRight.position)
             {
                 Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;  //subtracting the position of the sword from mouse position
                 difference.Normalize(); //The sum of the vector will always be equal to 1

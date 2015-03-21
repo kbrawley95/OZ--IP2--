@@ -7,6 +7,8 @@ public class Weapons : MonoBehaviour {
     private Collectable pickItem;
     public List<GameObject> weaponsList = new List<GameObject>();
     public Transform attachmentPoint;
+    public Transform attachmentPointRight;
+    public Transform holstered;
 	public int currentWeapon = 0;
 	public int numWeapons;
 
@@ -33,7 +35,20 @@ public class Weapons : MonoBehaviour {
 
         foreach (GameObject w in weaponsList)
         {
-            w.transform.position = attachmentPoint.position;
+
+           if (Input.GetKey("d"))
+                w.transform.position = attachmentPointRight.position;
+
+           else if (Input.GetKey("a"))
+               w.transform.position = attachmentPoint.position;
+
+           else
+           {
+               w.transform.rotation.Set(0, 0, 0, 0);
+               w.transform.position = holstered.position;
+             
+           }
+              
         }
         
             if (Input.GetKey("1")||Input.GetButton("ChangeWeaponPrevious"))
