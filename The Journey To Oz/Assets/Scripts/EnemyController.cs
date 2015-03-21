@@ -56,7 +56,7 @@ public class EnemyController : MonoBehaviour
             direction = direction.normalized;
             GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;
         }
-        else
+        else if (IsFollowing)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
             GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;

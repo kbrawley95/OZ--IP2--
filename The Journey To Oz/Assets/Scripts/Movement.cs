@@ -5,10 +5,12 @@ public class Movement : MonoBehaviour {
 
     public GameObject player;
     private Weapons origin;
+    public AudioClip swordSound;
 	// Use this for initialization
 	void Start () 
     {
         origin = player.GetComponent<Weapons>();
+    
 	}
 	
 	// Update is called once per frame
@@ -28,4 +30,14 @@ public class Movement : MonoBehaviour {
 
 	
 	}
+
+    public void PlaySwordSound()
+    {
+        if (swordSound)
+        {
+            AudioSource.PlayClipAtPoint(swordSound, transform.position);
+
+        }
+
+    }
 }

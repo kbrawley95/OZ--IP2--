@@ -8,6 +8,10 @@ public class CollideDisable : MonoBehaviour {
     SpawnSpiders spiderSpawn;
     public GameObject obj;
     public GameObject spider;
+    public GameObject background;
+    private AudioSource source;
+
+    public AudioClip battleTheme;
 
 
 	// Use this for initialization
@@ -18,6 +22,7 @@ public class CollideDisable : MonoBehaviour {
         controller.enabled = false;
         spiderSpawn = spider.GetComponent<SpawnSpiders>();
         spiderSpawn.enabled = false;
+        source = background.GetComponent<AudioSource>();
         
 	}
 	
@@ -35,11 +40,24 @@ public class CollideDisable : MonoBehaviour {
         {
             spiderSpawn.enabled = true;
             controller.enabled = true;
+            source.audio.Stop();
+            audio.Play();
 
             cam.maxZoom = 1;
             cam.minZoom = 6f;
+
+            gameObject.collider2D.enabled = false;
             //cam.enabled = false;
         }
     }
+
+   /* public void PlayBattleTheme()
+    {
+        if (battleTheme)
+        {
+            AudioSource.PlayClipAtPoint(battleTheme, transform.position, .5f);
+
+        }
+    }*/
 }
 

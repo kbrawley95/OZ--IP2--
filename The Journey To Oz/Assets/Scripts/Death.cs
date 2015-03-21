@@ -7,6 +7,7 @@ public class Death: MonoBehaviour {
     //public int totalParts=5;
 
     public string scene;
+    public AudioClip deathSound;
 
 
 	// Use this for initialization
@@ -27,6 +28,7 @@ public class Death: MonoBehaviour {
     {
         if (target.gameObject.tag=="Deadly"||target.gameObject.tag=="Boss")    
         {
+            PlayDeathSound();
             OnDeath();
             
         }
@@ -45,6 +47,7 @@ public class Death: MonoBehaviour {
     /// </summary>
     public void OnDeath()
     {
+       
         Destroy(gameObject);
         Application.LoadLevel(scene);
 
@@ -57,6 +60,15 @@ public class Death: MonoBehaviour {
             clone.rigidbody2D.AddForce(Vector3.right * Random.Range(-50, 50));
             clone.rigidbody2D.AddForce(Vector3.up * Random.Range(100, 400));
         }*/
+    }
+
+    public void PlayDeathSound()
+    {
+        if (deathSound)
+        {
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        }
+        
     }
 
     

@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
     {
         if (walkSound)
         {
-            AudioSource.PlayClipAtPoint(walkSound, transform.position);
+            AudioSource.PlayClipAtPoint(walkSound, transform.position, .5f);
             
         }
            
