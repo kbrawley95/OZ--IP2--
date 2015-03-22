@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed = 15f;
     public Vector2 maxVel = new Vector2(3, 3);
     public bool isSprinting = false;
+    public bool isFrozen = false;
 
     public PlayerController controller;
 
@@ -27,14 +28,14 @@ public class PlayerMovement : MonoBehaviour
         var absVelX = Mathf.Abs(rigidbody2D.velocity.x);
         var absVelY = Mathf.Abs(rigidbody2D.velocity.y);
 
-        if (controller.moving.x != 0 && !isSprinting )
+        if (controller.moving.x != 0 && !isSprinting  && isFrozen == false)
         {
             if (absVelX < maxVel.x)
             {
                 forceX = controller.moving.x * speed;
             }
         }
-        if (controller.moving.y != 0 && !isSprinting)
+        if (controller.moving.y != 0 && !isSprinting && isFrozen == false)
         {
             if (absVelY < maxVel.y)
             {
@@ -42,14 +43,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (controller.moving.x != 0 && isSprinting)
+        if (controller.moving.x != 0 && isSprinting && isFrozen == false)
         {
             if (absVelX < maxVel.x)
             {
                 forceX = controller.moving.x * sprintSpeed;
             }
         }
-        if (controller.moving.y != 0 && isSprinting)
+        if (controller.moving.y != 0 && isSprinting && isFrozen == false)
         {
             if (absVelY < maxVel.y)
             {
