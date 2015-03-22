@@ -6,12 +6,15 @@ public class FreezePlayer : MonoBehaviour {
     public PlayerMovement player;
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.tag=="Freeze")
+        if (target.gameObject.tag == "Freeze")
         {
             player.isFrozen = true;
             StartCoroutine(Freeze());
-            
-          
+
+        }
+        else
+        {
+            gameObject.collider2D.isTrigger = false;
         }
     }
 
