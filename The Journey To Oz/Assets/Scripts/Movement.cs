@@ -18,7 +18,16 @@ public class Movement : MonoBehaviour {
     {
         if (origin)
         {
-            if (transform.position == origin.attachmentPoint.position || transform.position == origin.attachmentPointRight.position)
+            if (origin.direction == PlayerController.DirectionState.Left || origin.direction == PlayerController.DirectionState.Right)
+            {
+                Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;  //subtracting the position of the sword from mouse position
+                difference.Normalize(); //The sum of the vector will always be equal to 1
+
+                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   //Calculating the angle of location and converting to degrees
+                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 180);
+            }
+
+            if (origin.direction == PlayerController.DirectionState.Up || origin.direction == PlayerController.DirectionState.Down)
             {
                 Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;  //subtracting the position of the sword from mouse position
                 difference.Normalize(); //The sum of the vector will always be equal to 1

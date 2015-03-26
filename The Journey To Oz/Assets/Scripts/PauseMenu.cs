@@ -8,8 +8,8 @@ public class PauseMenu : MonoBehaviour {
  
      void Update()
      {
-         if(Input.GetButtonDown("PauseButton"))
-             paused = togglePause();
+         if (Input.GetButtonDown("PauseButton"))
+             paused = !paused;
      }
      
      void OnGUI()
