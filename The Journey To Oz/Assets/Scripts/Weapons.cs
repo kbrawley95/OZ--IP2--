@@ -65,22 +65,26 @@ public class Weapons : MonoBehaviour
            if (direction == PlayerController.DirectionState.Up)
            {
                w.weapon.transform.position = w.top.position;
-               w.weapon.renderer.sortingLayerID = 1;
+               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
+               //w.weapon.renderer.sortingLayerID = 1;
            }
            else if (direction == PlayerController.DirectionState.Down)
            {
                w.weapon.transform.position = w.bottom.position;
-               w.weapon.renderer.sortingLayerID = 1;
+               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
+               //w.weapon.renderer.sortingLayerID = 1;
            }
            else if (direction == PlayerController.DirectionState.Left)
            {
                w.weapon.transform.position = w.left.position;
-               w.weapon.renderer.sortingLayerID = 1;
+               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
+               //w.weapon.renderer.sortingLayerID = 1;
            }
            else if (direction == PlayerController.DirectionState.Right)
            {
                w.weapon.transform.position = w.right.position;
-               w.weapon.renderer.sortingLayerID = 1;
+               //w.weapon.renderer.sortingLayerID = 1;
+               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
            }
               
         }
