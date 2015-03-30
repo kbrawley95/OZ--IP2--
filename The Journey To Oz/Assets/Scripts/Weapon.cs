@@ -28,6 +28,7 @@ public class Weapon : MonoBehaviour {
         {
             Destroy(target.gameObject);
             sound.PlaySwordSound();
+
             
 
             /*spider.spiderHealth -= 1;

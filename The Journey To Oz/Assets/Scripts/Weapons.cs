@@ -12,6 +12,8 @@ public class Weapons : MonoBehaviour
     public PlayerController.DirectionState direction = PlayerController.DirectionState.Right;
 	public int currentWeapon = 0;
 	public int numWeapons;
+    public bool isSetActive = false;
+    public GameObject script;
 
 
     //public GameObject sword;
@@ -24,8 +26,13 @@ public class Weapons : MonoBehaviour
 
         foreach (WeaponPositioner w in weaponsList)
         {
-            w.weapon.SetActive(false);
+            if (isSetActive)
+                w.weapon.SetActive(true);
+            else
+                w.weapon.SetActive(false);
         }
+
+        script = GetComponent<Movement>().gameObject;
 	}
 	
 	// Update is called once per frame
@@ -88,23 +95,26 @@ public class Weapons : MonoBehaviour
            }
               
         }
-        
-            if (Input.GetKey("1")||Input.GetButton("ChangeWeaponPrevious"))
-            {
-                changeWeapon(0);
-                Debug.Log("Unarmed");
-            }
 
-           /* if (Input.GetKey("2") || Input.GetButton("ChangeWeaponNext"))
-            {
-                changeWeapon(1);
-                Debug.Log("Sword");
-            }*/
-           
-        
-		
-	    
-	}
+
+
+        /* 
+         * 
+         *  if (Input.GetKey("1")||Input.GetButton("ChangeWeaponPrevious"))
+         {
+             changeWeapon(0);
+             Debug.Log("Unarmed");
+         }
+         * if (Input.GetKey("2") || Input.GetButton("ChangeWeaponNext"))
+         {
+             changeWeapon(1);
+             Debug.Log("Sword");
+         }*/
+
+
+
+
+    }
 
         public void changeWeapon(int num)
         {
@@ -130,10 +140,17 @@ public class Weapons : MonoBehaviour
         {
             if (target.gameObject.tag == "PickUp")
             {
-                weaponsList.Add(new WeaponPositioner(target.gameObject));
+                //weaponsList.Add(new WeaponPositioner(target.gameObject));
+                Destroy(target.gameObject);
+                foreach (WeaponPositioner w in weaponsList)
+                {
+                        w.weapon.SetActive(true);
+                        
+                }
+                script.gameObject.SetActive(true);
                 target.gameObject.tag = "Untagged";
 
-               
+              
             }
         }
 }
