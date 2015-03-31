@@ -9,7 +9,11 @@ public class PauseMenu : MonoBehaviour {
      void Update()
      {
          if (Input.GetButtonDown("PauseButton"))
+         {
              paused = !paused;
+             togglePause();
+         }
+            
      }
      
      void OnGUI()
