@@ -13,7 +13,8 @@ public class Weapons : MonoBehaviour
 	public int currentWeapon = 0;
 	public int numWeapons;
     public bool isSetActive = false;
-    public GameObject script;
+    public Movement script;
+    public GameObject sword;
 
 
     //public GameObject sword;
@@ -32,7 +33,7 @@ public class Weapons : MonoBehaviour
                 w.weapon.SetActive(false);
         }
 
-        script = GetComponent<Movement>().gameObject;
+        script = sword.GetComponent<Movement>();
 	}
 	
 	// Update is called once per frame

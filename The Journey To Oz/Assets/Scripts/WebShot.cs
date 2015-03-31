@@ -31,7 +31,11 @@ public class WebShot : MonoBehaviour
         float direction = -offSet.x;
         // direction = direction.normalized;
         foreach (GameObject g in webShots)
-            g.GetComponent<Rigidbody2D>().velocity = new Vector3(direction, 0, 0) * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
+        { 
+            if(g!=null)
+                g.GetComponent<Rigidbody2D>().velocity = new Vector3(direction, 0, 0) * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
+        }
+            
     }
 
     void OnTriggerEnter2D(Collider2D target)
