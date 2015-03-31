@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WebShot : MonoBehaviour {
+public class WebShot : MonoBehaviour
+{
 
     public GameObject webShotPrefab;
     public float maxSpeed, minSpeed;
-    public Vector3 offSet= Vector3.zero;
+    public Vector3 offSet = Vector3.zero;
     public float startingDelay = 1.0f;
     public float delayMin, delayMax = 2.0f;
     public int counter, limit;
@@ -15,20 +16,23 @@ public class WebShot : MonoBehaviour {
     private List<GameObject> webShots = new List<GameObject>();
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         webShots = new List<GameObject>();
         StartCoroutine(SpawnWebs(startingDelay));
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
 
         float direction = -offSet.x;
         // direction = direction.normalized;
-        webShotPrefab.GetComponent<Rigidbody2D>().velocity = new Vector3(direction, 0, 0) * Random.Range(minSpeed, maxSpeed) * Time.deltaTime; ;
-	}
+        foreach (GameObject g in webShots)
+            g.GetComponent<Rigidbody2D>().velocity = new Vector3(direction, 0, 0) * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
+    }
 
     void OnTriggerEnter2D(Collider2D target)
     {
@@ -39,9 +43,9 @@ public class WebShot : MonoBehaviour {
 
             if (counter == 4)
             {
-                player.rigidbody2D.AddForce(new Vector2(3,3));
+                player.rigidbody2D.AddForce(new Vector2(3, 3));
             }
-           
+
         }
     }
 

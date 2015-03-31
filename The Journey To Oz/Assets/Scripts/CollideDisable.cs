@@ -3,14 +3,20 @@ using System.Collections;
 
 public class CollideDisable : MonoBehaviour {
 
+    //Scripts
     CameraFollow cam;
     EnemyController controller;
     SpawnSpiders spiderSpawn;
+    WebShot webSpawn;
+
+    //Reference Objects
     public GameObject obj;
     public GameObject spider;
     public GameObject background;
-    private AudioSource source;
+    public GameObject web;
 
+    //Audio Components
+    private AudioSource source;
     public AudioClip battleTheme;
 
 
@@ -18,10 +24,16 @@ public class CollideDisable : MonoBehaviour {
 	void Start () {
 
         cam = obj.GetComponent<CameraFollow>();
+
         controller=spider.GetComponent<EnemyController>();
         controller.enabled = false;
+
         spiderSpawn = spider.GetComponent<SpawnSpiders>();
         spiderSpawn.enabled = false;
+
+        webSpawn = web.GetComponent<WebShot>();
+        webSpawn.enabled = false;
+
         source = background.GetComponent<AudioSource>();
         
 	}
@@ -41,10 +53,14 @@ public class CollideDisable : MonoBehaviour {
             spiderSpawn.enabled = true;
             controller.enabled = true;
             source.audio.Stop();
+            webSpawn.enabled = true;
+
             audio.Play();
 
             cam.maxZoom = 1;
             cam.minZoom = 6f;
+
+
 
             gameObject.collider2D.enabled = false;
             //cam.enabled = false;
