@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
      public float  maxSpeed = 80f;
     public Vector3[] points;
     public LayerMask layer;
+    public Animator anim;
 
     //public float spiderHealth;
 
@@ -19,11 +20,12 @@ public class EnemyController : MonoBehaviour
     {
         
        // spiderHealth = 3;
+        anim = GetComponent<Animator>();
     }
         
     private void Update()
     {
-
+        anim.SetInteger("Walk", 1);
         if (Vector3.Distance(points[current], transform.position) < 1)
         {
             current++;
