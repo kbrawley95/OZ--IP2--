@@ -5,7 +5,7 @@ public class CollideDisable : MonoBehaviour {
 
     //Scripts
     CameraFollow cam;
-    EnemyController controller;
+    BossEnemyController controller;
     SpawnSpiders spiderSpawn;
     WebShot webSpawn;
 
@@ -25,7 +25,7 @@ public class CollideDisable : MonoBehaviour {
 
         cam = obj.GetComponent<CameraFollow>();
 
-        controller=spider.GetComponent<EnemyController>();
+        controller=spider.GetComponent<BossEnemyController>();
         controller.enabled = false;
 
         spiderSpawn = spider.GetComponent<SpawnSpiders>();

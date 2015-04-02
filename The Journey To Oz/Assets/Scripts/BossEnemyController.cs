@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour 
+public class BossEnemyController : MonoBehaviour
 {
     public GameObject player;
     public float followDistance;
     public float minSpeed = 50f;
-     public float  maxSpeed = 80f;
+    public float maxSpeed = 80f;
     public Vector3[] points;
     public LayerMask layer;
 
+    public Animator anim;
     //public float spiderHealth;
 
     private bool IsFollowing = false;
@@ -17,13 +18,14 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        
-       // spiderHealth = 3;
+
+        // spiderHealth = 3;
+        anim = GetComponent<Animator>();
     }
-        
+
     private void Update()
     {
-
+        anim.SetInteger("Walk", 1);
         if (Vector3.Distance(points[current], transform.position) < 1)
         {
             current++;
@@ -66,6 +68,3 @@ public class EnemyController : MonoBehaviour
         }
     }
 }
-
-
-
