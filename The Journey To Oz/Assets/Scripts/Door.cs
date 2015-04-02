@@ -17,7 +17,7 @@ public class Door : MonoBehaviour {
 
     private int state = (int)DoorState.IDLE;
     private Animator anim;
-
+    public bool isOpen = false;
     public string scene;
 
     Switch switchObject;
@@ -43,6 +43,7 @@ public class Door : MonoBehaviour {
      void OnOpenEnd()
     {
         state = (int)DoorState.OPEN;
+        isOpen = true;
     }
 
       void OnCloseStart()
@@ -53,6 +54,7 @@ public class Door : MonoBehaviour {
      void OnCloseEnd()
     {
         state = (int)DoorState.IDLE;
+        isOpen = false;
     }
 
      void DisableCollider2D()
@@ -84,7 +86,7 @@ public class Door : MonoBehaviour {
 
      void OnTriggerEnter2D(Collider2D target)
      {
-         if (target.gameObject.tag == "Player")
+         if (target.gameObject.tag == "Player" && isOpen)
          {
              Destroy(target.gameObject);
              Application.LoadLevel(scene);
