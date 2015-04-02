@@ -13,15 +13,19 @@ public class SpawnedSpiderController : MonoBehaviour {
     //public float spiderHealth;
 
     private bool IsFollowing = false;
-    private int current = 0;
+
+    public Animator anim;
+
 
     private void Start()
     {
         // spiderHealth = 3;
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        anim.SetInteger("Walk", 1);
 
         if (player != null)
         {

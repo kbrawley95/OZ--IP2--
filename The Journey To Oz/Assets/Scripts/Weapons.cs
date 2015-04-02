@@ -43,31 +43,33 @@ public class Weapons : MonoBehaviour
         {
             lastPosition = w.weapon.transform.position;
 
-           if (Input.GetKey("w"))
+            //Keyboard & Gamepad
+           if (Input.GetKey("w")||(Input.GetAxis("Vertical") == -1f ))
            {
                direction = PlayerController.DirectionState.Up;
            }
-              
-           else if (Input.GetKey("s"))
+
+           else if (Input.GetKey("s") || (Input.GetAxis("Vertical") == 1f))
            {
                direction = PlayerController.DirectionState.Down;
            }
-              
-           else if (Input.GetKey("d"))
+
+           else if (Input.GetKey("d") || (Input.GetAxis("Horizontal") == 1f))
            {
                direction = PlayerController.DirectionState.Right;
            }
-               
 
-           else if (Input.GetKey("a"))
+
+           else if (Input.GetKey("a") || (Input.GetAxis("Horizontal") == -1f))
            {
                direction = PlayerController.DirectionState.Left;
            }
+
            else
            {
                w.weapon.transform.rotation.Set(0, 0, 0, 0);
                w.weapon.transform.position = lastPosition;
-             
+
            }
 
            if (direction == PlayerController.DirectionState.Up)

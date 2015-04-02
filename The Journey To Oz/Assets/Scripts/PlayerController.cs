@@ -64,13 +64,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //Diagonal Movement
-        if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == 1f || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == 1f)
+        if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == 1f && paused.paused == false || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == 1f && paused.paused == false)
         {
             moving.x = Input.GetAxis("Horizontal");
             moving.y = -Input.GetAxis("Vertical");
             anim.SetInteger("Direction", (int)DirectionState.Down);
         }
-        else if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == -1f || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == -1f)
+        else if (Input.GetAxis("Horizontal") == -1f && Input.GetAxis("Vertical") == -1f && paused.paused == false || Input.GetAxis("Horizontal") == 1f && Input.GetAxis("Vertical") == -1f && paused.paused == false)
         {
             moving.x = Input.GetAxis("Horizontal");
             moving.y = -Input.GetAxis("Vertical");
