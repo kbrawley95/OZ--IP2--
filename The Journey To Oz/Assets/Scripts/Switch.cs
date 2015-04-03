@@ -24,7 +24,7 @@ public class Switch : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.rigidbody2D.mass == 5)
+        if (target.gameObject.rigidbody2D.mass == 5 || target.gameObject.tag=="Player")
         {
             anim.SetInteger("AnimState", 1);
             down = true;
