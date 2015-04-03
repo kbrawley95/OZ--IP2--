@@ -15,10 +15,7 @@ public class Movement : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        origin = player.GetComponent<Weapons>();
-        xAxis = Input.GetAxis("HorizontalRightThumb");
-        yAxis = Input.GetAxis("VerticalRightThumb");
-    
+        origin = player.GetComponent<Weapons>();    
 	}
 	
 	// Update is called once per frame
@@ -26,53 +23,71 @@ public class Movement : MonoBehaviour {
     {
         if (origin)
         {
-            //Mouse Movement
-            if (origin.direction == PlayerController.DirectionState.Left &&!isUsingController || origin.direction == PlayerController.DirectionState.Right && !isUsingController)
+            if (!isUsingController)
             {
-                Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;  //subtracting the position of the sword from mouse position
-                difference.Normalize(); //The sum of the vector will always be equal to 1
+                //Mouse movement
+                Vector2 mousePosition = Input.mousePosition; //Get Mouse Position
 
-                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   //Calculating the angle of location and converting to degrees
-                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 180);
-            }
+                //Center of the screen is 0, 0
+                mousePosition.x -= Screen.width / 2;
+                mousePosition.y -= Screen.height / 2;
 
-            if (origin.direction == PlayerController.DirectionState.Up &&!isUsingController|| origin.direction == PlayerController.DirectionState.Down && !isUsingController)
-            {
-                Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;  //subtracting the position of the sword from mouse position
-                difference.Normalize(); //The sum of the vector will always be equal to 1
+                //Normalize mouse position
+                mousePosition = mousePosition.normalized;
 
-                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;   //Calculating the angle of location and converting to degrees
-                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + 180);
-            }
+                //Claculate angle to rotate
+                float angle = Mathf.Atan(mousePosition.y / mousePosition.x);
+                
+                //Convert to degrees
+                angle = angle * 180 / Mathf.PI;
 
-
-            //Gamepad Movement
-
-            else if (origin.direction == PlayerController.DirectionState.Left  &&isUsingController || origin.direction == PlayerController.DirectionState.Right && isUsingController)
-            {
-                if (xAxis != 0.0f || yAxis != 0.0f)
+                //When x is negative flip the sword
+                if (mousePosition.x > 0)
                 {
-                    float rot = Mathf.Atan2(xAxis, yAxis) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.Euler(0f, 0f, rot + 180);
+                    //Sword is rotated 90 degrees so to make it look nice offset it by 90
+                    angle -= 90;
                 }
-               
+                else if (mousePosition.x < 0)
+                {
+                    angle += 90;
+                }
+
+                //Rotate sword
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             }
+            else
+            {
+                xAxis = Input.GetAxis("HorizontalRightThumb");
+                yAxis = -Input.GetAxis("VerticalRightThumb");
 
+                //Gamepad Movement
+                if (xAxis != 0 && yAxis != 0)
+                {
+                    //Get Joystick axies
+                    Vector2 joystick = new Vector2(xAxis, yAxis);
 
-            else if (origin.direction == PlayerController.DirectionState.Up && isUsingController || origin.direction == PlayerController.DirectionState.Down && isUsingController)
-              {
-                  if (xAxis != 0.0f || yAxis != 0.0f)
-                  {
-                      float rot = Mathf.Atan2(xAxis, yAxis) * Mathf.Rad2Deg;
-                      transform.rotation = Quaternion.Euler(0f, 0f, rot + 180);
-                  }
-              }
+                    //Claculate angle to rotate
+                    float angle = Mathf.Atan(joystick.y / joystick.x);
 
+                    //Convert to degrees
+                    angle = angle * 180 / Mathf.PI;
 
+                    //When x is negative flip the sword
+                    if (joystick.x > 0)
+                    {
+                        //Sword is rotated 90 degrees so to make it look nice offset it by 90
+                        angle -= 90;
+                    }
+                    else if (joystick.x < 0)
+                    {
+                        angle += 90;
+                    }
 
+                    //Rotate sword
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                }
+            }
         }
-
-	
 	}
 
     public void PlaySwordSound()
