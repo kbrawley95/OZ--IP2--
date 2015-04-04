@@ -21,6 +21,13 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        if (Mathf.Abs(Input.GetAxis("HorizontalRightThumb")) > 0.2 || Mathf.Abs(Input.GetAxis("VerticalRightThumb")) > 0.2)
+        {
+            isUsingController = true;
+        }
+        else
+            isUsingController = false;
+
         if (origin)
         {
             if (!isUsingController)
@@ -57,6 +64,8 @@ public class Movement : MonoBehaviour {
             }
             else
             {
+                
+
                 xAxis = Input.GetAxis("HorizontalRightThumb");
                 yAxis = -Input.GetAxis("VerticalRightThumb");
 
