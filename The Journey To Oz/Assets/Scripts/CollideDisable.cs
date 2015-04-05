@@ -10,13 +10,13 @@ public class CollideDisable : MonoBehaviour {
     WebShot webSpawn;
     Animator anim;
     RockManagement rockManager;
-    Roll roll;
+    //Roll roll;
 
     //Reference Objects
     public GameObject obj;
     public GameObject spider;
     public GameObject background;
-    public GameObject spiderHead;
+   // public GameObject spiderHead;
 
     //Audio Components
     private AudioSource source;
@@ -45,8 +45,8 @@ public class CollideDisable : MonoBehaviour {
         rockManager = GetComponent<RockManagement>();
         rockManager.enabled = false;
 
-        roll = spiderHead.GetComponent<Roll>();
-        roll.enabled = false;
+        //roll = spiderHead.GetComponent<Roll>();
+        //roll.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -89,7 +89,7 @@ public class CollideDisable : MonoBehaviour {
         if(rockManager)
         rockManager.enabled = true;
 
-        roll.enabled = true;
+        //roll.enabled = true;
 
     }
 
