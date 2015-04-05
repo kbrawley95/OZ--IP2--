@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Credits : MonoBehaviour {
 
-    public GameObject cam;
+    //public GameObject cam;
     public int speed = 1;
     public string scene;
 
@@ -15,7 +15,9 @@ public class Credits : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        cam.transform.Translate(Vector3.up * Time.deltaTime * speed);
+       // cam.transform.Translate(Vector3.up * Time.deltaTime * speed);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
+
 	}
 
     IEnumerator WaitFor()
