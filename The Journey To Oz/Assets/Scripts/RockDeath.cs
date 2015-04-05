@@ -7,12 +7,8 @@ public class RockDeath : MonoBehaviour {
    private SpawnSpiders spawnSpiders;
    private WebShot webShot;
 
-   public Gate gate;
-   public GameObject gateObj;
-
 	// Use this for initialization
 	void Start () {
-        gate = gateObj.GetComponent<Gate>();
 	}
 	
 	// Update is called once per frame
@@ -23,7 +19,7 @@ public class RockDeath : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.tag == "Block2" && gate.isTriggered)
+        if (target.gameObject.tag == "Block2")
         {
             GetComponent<Animator>().SetInteger("Death", 1);
             GetComponent<BossEnemyController>().enabled = false;
@@ -34,9 +30,7 @@ public class RockDeath : MonoBehaviour {
         else 
         {
             GetComponent<Animator>().SetInteger("Death", 0);
-            GetComponent<BossEnemyController>().enabled = true;
-            GetComponent<SpawnSpiders>().enabled = true;
-            GetComponent<WebShot>().enabled = true;
+           
         }
       
        

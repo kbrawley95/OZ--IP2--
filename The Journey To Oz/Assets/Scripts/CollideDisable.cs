@@ -8,16 +8,12 @@ public class CollideDisable : MonoBehaviour {
     BossEnemyController controller;
     SpawnSpiders spiderSpawn;
     WebShot webSpawn;
-    RockDeath bossDeath;
-    Gate gate;
+    Animator anim;
 
     //Reference Objects
     public GameObject obj;
     public GameObject spider;
     public GameObject background;
-    public GameObject web;
-    public GameObject spiderBoss;
-    public GameObject gateObj;
 
     //Audio Components
     private AudioSource source;
@@ -27,6 +23,7 @@ public class CollideDisable : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        
         cam = obj.GetComponent<CameraFollow>();
 
         controller=spider.GetComponent<BossEnemyController>();
@@ -35,31 +32,17 @@ public class CollideDisable : MonoBehaviour {
         spiderSpawn = spider.GetComponent<SpawnSpiders>();
         spiderSpawn.enabled = false;
 
-        webSpawn = web.GetComponent<WebShot>();
+        webSpawn = spider.GetComponent<WebShot>();
         webSpawn.enabled = false;
 
         source = background.GetComponent<AudioSource>();
-        bossDeath = spiderBoss.GetComponent<RockDeath>();
-        bossDeath.enabled = false;
 
-        gate = gateObj.GetComponent<Gate>();
-        gate.isTriggered = false;
-
-        
-        
+        anim = spider.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (gate.isTriggered)
-        {
-
-            bossDeath.enabled = true;
-        }
-        else
-            bossDeath.enabled = false;
-      
 
 	}
 
@@ -82,6 +65,19 @@ public class CollideDisable : MonoBehaviour {
             gameObject.collider2D.enabled = false;
             //cam.enabled = false;
         }
+    }
+
+    public void EndGame()
+    {
+        //Disables all active components
+        spiderSpawn.enabled = false;
+        controller.enabled = false;
+        webSpawn.enabled = false;
+        audio.Stop();
+        anim.SetInteger("Death", 1);
+        
+
+
     }
 
    /* public void PlayBattleTheme()

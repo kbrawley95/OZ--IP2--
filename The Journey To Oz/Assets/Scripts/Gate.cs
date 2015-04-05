@@ -9,12 +9,17 @@ public class Gate : MonoBehaviour {
     public float speed = 50f;
     public float x, y, z;
 
-   //public GameObject rock;
-   //public BossSpiderDeath death;
+    //Reference Scripts
+    CollideDisable scriptManager;
+
+    //Reference Script (Objects)
+    public GameObject scriptManObj;
+
 
 	// Use this for initialization
 	void Start () {
-       // death = rock.GetComponent<BossSpiderDeath>();
+
+        scriptManager = scriptManObj.GetComponent<CollideDisable>();
 	}
     void Update()
     {
@@ -33,17 +38,15 @@ public class Gate : MonoBehaviour {
     {
         if (!isTriggered)
         {
-            //death.enabled = false;
             transform.position = new Vector3(x, y, z);
             GetComponent<Rigidbody2D>().velocity = transform.position * speed * Time.deltaTime;
         }
         else if (isTriggered)
         {
-            
+            scriptManager.EndGame(); 
             Vector3 direction = points[current] - transform.position;
             direction = direction.normalized;
             GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;
-            //death.enabled = true;
         }
 	
 	}

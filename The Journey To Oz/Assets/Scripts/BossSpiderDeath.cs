@@ -3,14 +3,12 @@ using System.Collections;
 
 public class BossSpiderDeath : MonoBehaviour {
 
-   public GameObject Boss;
-   RockDeath death;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 
-        death = Boss.GetComponent<RockDeath>();
-        death.enabled = false;
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -21,11 +19,11 @@ public class BossSpiderDeath : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D target)
     {
         
-            if (target.gameObject.tag == "Boss")
+            if (target.gameObject.tag == "Block2")
             {
-
-                //Destroy(gameObject);
-                death.enabled = true;
+                Destroy(target.gameObject);
+                anim.SetInteger("Death", 1);
+               
             }
         }
        

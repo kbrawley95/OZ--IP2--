@@ -11,7 +11,7 @@ public class BossEnemyController : MonoBehaviour
     public LayerMask layer;
     public Vector3 lastPosition;
 
-    public Animator anim;
+  private Animator anim;
     //public float spiderHealth;
 
     private bool IsFollowing = false;
