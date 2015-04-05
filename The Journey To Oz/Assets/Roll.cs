@@ -5,11 +5,9 @@ public class Roll : MonoBehaviour {
 
     public GameObject spiderBoss;
 
-    public Vector3[] points;
+    public Vector3 point;
     private int current = 0;
     public float speed = 40;
-
-    public float x, y, z;
 
 	// Use this for initialization
 	void Start () {
@@ -19,15 +17,12 @@ public class Roll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Vector3.Distance(points[current], transform.position) < 1)
-        {
-            current++;
-            if (current >= points.Length)
-                current = 0;
-        }
+           Vector3 direction= transform.position+point;
+            GetComponent<Rigidbody2D>().velocity =  direction * Time.deltaTime;
 
-            points[current] = new Vector3(x, y, z);
-            Vector3 direction = points[current] - transform.position;
-            GetComponent<Rigidbody2D>().velocity = direction * speed * Time.deltaTime;
+            if (transform.position == point)
+            {
+                transform.position = point;
+            }
 	}
 }

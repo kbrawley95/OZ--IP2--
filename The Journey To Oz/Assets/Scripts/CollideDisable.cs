@@ -9,11 +9,14 @@ public class CollideDisable : MonoBehaviour {
     SpawnSpiders spiderSpawn;
     WebShot webSpawn;
     Animator anim;
+    RockManagement rockManager;
+    Roll roll;
 
     //Reference Objects
     public GameObject obj;
     public GameObject spider;
     public GameObject background;
+    public GameObject spiderHead;
 
     //Audio Components
     private AudioSource source;
@@ -38,7 +41,13 @@ public class CollideDisable : MonoBehaviour {
         source = background.GetComponent<AudioSource>();
 
         anim = spider.GetComponent<Animator>();
-	}
+
+        rockManager = GetComponent<RockManagement>();
+        rockManager.enabled = false;
+
+        roll = spiderHead.GetComponent<Roll>();
+        roll.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -54,13 +63,14 @@ public class CollideDisable : MonoBehaviour {
             controller.enabled = true;
             source.audio.Stop();
             webSpawn.enabled = true;
+            
 
             audio.Play();
 
             cam.maxZoom = 1;
             cam.minZoom = 6f;
 
-
+           
 
             gameObject.collider2D.enabled = false;
             //cam.enabled = false;
@@ -75,8 +85,11 @@ public class CollideDisable : MonoBehaviour {
         Destroy(controller);
         audio.Stop();
         anim.SetInteger("Death", 1);
-        
 
+        if(rockManager)
+        rockManager.enabled = true;
+
+        roll.enabled = true;
 
     }
 
