@@ -70,9 +70,9 @@ public class CollideDisable : MonoBehaviour {
     public void EndGame()
     {
         //Disables all active components
-        spiderSpawn.enabled = false;
-        controller.enabled = false;
-        webSpawn.enabled = false;
+        Destroy(spiderSpawn);
+        Destroy(webSpawn);
+        Destroy(controller);
         audio.Stop();
         anim.SetInteger("Death", 1);
         
