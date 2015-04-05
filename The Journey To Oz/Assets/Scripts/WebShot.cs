@@ -40,15 +40,20 @@ public class WebShot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
+        
         if (target.gameObject.tag == "Player")
         {
-            player.rigidbody2D.AddForce(new Vector2(0, 0));
-            counter++;
-
-            if (counter == 4)
+            if (player)
             {
-                player.rigidbody2D.AddForce(new Vector2(3, 3));
+                player.rigidbody2D.AddForce(new Vector2(0, 0));
+                counter++;
+
+                if (counter == 4)
+                {
+                    player.rigidbody2D.AddForce(new Vector2(3, 3));
+                }
             }
+           
 
         }
     }

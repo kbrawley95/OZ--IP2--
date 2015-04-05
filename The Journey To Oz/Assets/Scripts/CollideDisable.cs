@@ -8,12 +8,16 @@ public class CollideDisable : MonoBehaviour {
     BossEnemyController controller;
     SpawnSpiders spiderSpawn;
     WebShot webSpawn;
+    RockDeath bossDeath;
+    Gate gate;
 
     //Reference Objects
     public GameObject obj;
     public GameObject spider;
     public GameObject background;
     public GameObject web;
+    public GameObject spiderBoss;
+    public GameObject gateObj;
 
     //Audio Components
     private AudioSource source;
@@ -35,13 +39,26 @@ public class CollideDisable : MonoBehaviour {
         webSpawn.enabled = false;
 
         source = background.GetComponent<AudioSource>();
+        bossDeath = spiderBoss.GetComponent<RockDeath>();
+        bossDeath.enabled = false;
+
+        gate = gateObj.GetComponent<Gate>();
+        gate.isTriggered = false;
+
+        
         
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    
+        if (gate.isTriggered)
+        {
+
+            bossDeath.enabled = true;
+        }
+        else
+            bossDeath.enabled = false;
       
 
 	}

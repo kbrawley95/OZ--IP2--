@@ -81,7 +81,7 @@ public class Weapons : MonoBehaviour
            else if (direction == PlayerController.DirectionState.Down)
            {
                w.weapon.transform.position = w.bottom.position;
-               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 1;
+               w.weapon.GetComponent<SpriteRenderer>().sortingOrder = 2;
                //w.weapon.renderer.sortingLayerID = 1;
            }
            else if (direction == PlayerController.DirectionState.Left)
