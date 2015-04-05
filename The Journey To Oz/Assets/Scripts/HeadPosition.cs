@@ -48,7 +48,9 @@ public class HeadPosition : MonoBehaviour {
     {
            
             renderer.sortingOrder = 2;
+          
             transform.position=Vector3.MoveTowards(attachmentPoint.transform.position, severedPoint.transform.position, speed);
+            
             anim.SetInteger("Death", 1);
     }
 }

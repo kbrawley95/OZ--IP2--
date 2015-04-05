@@ -85,6 +85,7 @@ public class CollideDisable : MonoBehaviour {
         Destroy(controller);
         audio.Stop();
         anim.SetInteger("Death", 1);
+        spider.collider2D.enabled = false;
 
         if(rockManager)
         rockManager.enabled = true;

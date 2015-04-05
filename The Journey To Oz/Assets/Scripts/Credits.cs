@@ -15,7 +15,7 @@ public class Credits : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        cam.transform.Translate(Vector3.down * Time.deltaTime * speed);
+        cam.transform.Translate(Vector3.up * Time.deltaTime * speed);
 	}
 
     IEnumerator WaitFor()
