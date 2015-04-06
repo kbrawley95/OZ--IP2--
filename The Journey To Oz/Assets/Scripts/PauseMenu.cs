@@ -25,6 +25,11 @@ public class PauseMenu : MonoBehaviour {
              
              GUILayout.EndArea();
 
+             GUILayout.BeginArea(new Rect((0) +100, (0), 100, 100), "<color=White><size=28>For Hints: Press H or Back Button</size></color>");
+             //GUILayout.Label("Game is paused!");
+
+             GUILayout.EndArea();
+
             
          }
      }  

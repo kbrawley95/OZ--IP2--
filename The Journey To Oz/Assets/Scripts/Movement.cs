@@ -10,12 +10,14 @@ public class Movement : MonoBehaviour {
 
     private float xAxis;
     private float yAxis;
-
+    PauseMenu pause;
+    GameObject level;
    
 	// Use this for initialization
 	void Start () 
     {
-        origin = player.GetComponent<Weapons>();    
+        origin = player.GetComponent<Weapons>();
+        pause = level.GetComponent<PauseMenu>();
 	}
 	
 	// Update is called once per frame
@@ -70,7 +72,7 @@ public class Movement : MonoBehaviour {
                 yAxis = -Input.GetAxis("VerticalRightThumb");
 
                 //Gamepad Movement
-                if (xAxis != 0 && yAxis != 0)
+                if (xAxis != 0 && yAxis != 0 &&!pause.paused)
                 {
                     //Get Joystick axies
                     Vector2 joystick = new Vector2(xAxis, yAxis);
