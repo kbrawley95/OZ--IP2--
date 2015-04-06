@@ -36,7 +36,7 @@ public class WispHints : MonoBehaviour {
 		}
 		if(intro)
 		{
-			GUILayout.BeginArea (new Rect((Screen.width)-1100, (Screen.height/2), 100, 100), "<color=White><size=20>I may as well follow you around and tell you obvious things.</size></color>");
+			GUILayout.BeginArea (new Rect((Screen.width)-1100, (Screen.height/2), 100, 100), "<color=White><size=20>I may as well follow you around and tell you obvious things (H for hints).</size></color>");
 			//GUILayout.Label("Wisps Intro");
 			
 			GUILayout.EndArea();
