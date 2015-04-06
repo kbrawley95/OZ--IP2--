@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour {
         else
             isUsingController = false;
 
+        Debug.Log(isUsingController);
+
         if (origin)
         {
             if (!isUsingController)
@@ -37,8 +39,9 @@ public class Movement : MonoBehaviour {
                 //Mouse movement
                 Vector2 mousePosition = Input.mousePosition; //Get Mouse Position
 
-                //The player's position is 0, 0
-                mousePosition -= new Vector2(Camera.main.WorldToScreenPoint(player.transform.position).x, Camera.main.WorldToScreenPoint(player.transform.position).y);
+                //Center of the screen is 0, 0
+                mousePosition.x -= Screen.width / 2;
+                mousePosition.y -= Screen.height / 2;
 
                 //Normalize mouse position
                 mousePosition = mousePosition.normalized;
