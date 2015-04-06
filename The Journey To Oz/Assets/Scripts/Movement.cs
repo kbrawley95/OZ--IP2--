@@ -7,11 +7,11 @@ public class Movement : MonoBehaviour {
     private Weapons origin;
     public AudioClip swordSound;
     public bool isUsingController = false;
+    public GameObject level;
 
     private float xAxis;
     private float yAxis;
     PauseMenu pause;
-    GameObject level;
    
 	// Use this for initialization
 	void Start () 
@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour {
         }
         else
             isUsingController = false;
+
+        Debug.Log(isUsingController);
 
         if (origin)
         {
