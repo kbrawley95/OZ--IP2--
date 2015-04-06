@@ -18,7 +18,7 @@ public class CreditsReset : MonoBehaviour {
 
     private IEnumerator WaitFor()
     {
-        yield return new WaitForSeconds(125);
+        yield return new WaitForSeconds(130);
         Application.LoadLevel(scene);
     }
 }
