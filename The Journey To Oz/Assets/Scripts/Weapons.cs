@@ -13,7 +13,7 @@ public class Weapons : MonoBehaviour
 	public int currentWeapon = 0;
 	public int numWeapons;
     public bool isSetActive = false;
-    public Movement script;
+   Movement script;
     public GameObject sword;
 
 
